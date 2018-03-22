@@ -33,3 +33,32 @@ class Timer(timeit.Timer):
         if self.storage:
             return pd.Series(self.storage).describe()
         
+
+class TimeCollection:
+    def __init__(self, stmt_lst, globals_lst, repeats_lst=None, name_lst=None):
+        self.stmt_lst = stmt_lst
+        self.globals_lst = globals_lst
+        
+        if repeats_lst is None:
+            self.repeats_lst = [7] * len(stmt_lst)
+        else:
+            self.repeats_lst = repeats_lst
+        
+        if name_lst is None:
+            self.name_lst = [None] * len(stmt_lst)
+        else:
+            self.name_lst = name_lst
+        
+        self.storage = []
+    
+    @property
+    def get_statistics(self):
+        arg_tuple = (self.stmt_lst, self.globals_lst, self.repeats_lst, self.name_lst)
+        for stmt, glob, rep, name in zip(*arg_tuple):
+            t = Timer(stmt, globals=glob)
+            t.repeat_autorange(rep)
+            out = t.statistics
+            out.name = name
+            self.storage.append(out)
+        return pd.concat(self.storage, axis=1)
+    
