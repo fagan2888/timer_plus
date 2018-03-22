@@ -61,4 +61,4 @@ class TimeCollection:
             out.name = name
             self.storage.append(out)
         return pd.concat(self.storage, axis=1)
-    
+ 
