@@ -31,4 +31,5 @@ class Timer(timeit.Timer):
     @property
     def statistics(self):
         if self.storage:
-return pd.Series(self.storage).describe()
+            return pd.Series(self.storage).describe()
+        
