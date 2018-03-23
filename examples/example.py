@@ -16,5 +16,5 @@ for i, N in enumerate(N_list):
     repeat_list.append(7)
     name_list.append("N=%.1E" % N)
 
-pd_time = tp.TimeCollection(pd_stmt_list, glob_list, repeat_list, name_list).get_statistics
-np_time = tp.TimeCollection(np_stmt_list, glob_list, repeat_list, name_list).get_statistics
+pd_time = tp.TimerCollection(pd_stmt_list, glob_list, repeat_list, name_list).get_statistics
+np_time = tp.TimerCollection(np_stmt_list, glob_list, repeat_list, name_list).get_statistics
