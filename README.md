@@ -6,7 +6,7 @@ Dependencies:
 ## Install
 
 ```
-pip install git+
+pip install git+https://github.com/mmngreco/timer_plus.git
 ```
 
 TODO
