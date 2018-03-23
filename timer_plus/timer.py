@@ -34,7 +34,7 @@ class Timer(timeit.Timer):
             return pd.Series(self.storage).describe()
         
 
-class TimeCollection:
+class TimerCollection:
     def __init__(self, stmt_lst, globals_lst, repeats_lst=None, name_lst=None):
         self.stmt_lst = stmt_lst
         self.globals_lst = globals_lst
